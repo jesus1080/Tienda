@@ -24,3 +24,16 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/perfil', [App\Http\Controllers\PerfilController::class, 'edit'])->name('perfil');
 
 Route::post('/perfil', [App\Http\Controllers\PerfilController::class, 'update'])->name('perfil.update');
+
+Route::get('/products', [App\Http\Controllers\ProductController::class, 'index'])->name('products');
+
+Route::get('/products/create', [App\Http\Controllers\ProductController::class, 'create'])->name('products.create');
+
+Route::post('/products/create', [App\Http\Controllers\ProductController::class, 'store'])->name('products.store');
+
+Route::get('/product/{id}', [App\Http\Controllers\ProductController::class, 'edit'])->name('product.edit');
+
+Route::patch('product/{id}/update', [App\Http\Controllers\ProductController::class, 'update'])->name('products.update');
+
+Route::delete('products/{id}', [App\Http\Controllers\ProductController::class, 'destroy'])->name('products.destroy');
+
