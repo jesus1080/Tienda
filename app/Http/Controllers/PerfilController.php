@@ -24,7 +24,7 @@ class PerfilController extends Controller
     public function update(Request $request)
     {
         $user = User::find(auth()->user()->id);
-
+    
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
@@ -38,11 +38,11 @@ class PerfilController extends Controller
             $user->password = bcrypt($request->password);
             $user->save();
         }
-
+        
         if ($request->hasFile('photo')) {
             $photo = $request->file('photo');
             $filename = time().'.'.$photo->getClientOriginalExtension();
-            Image::make($photo)->resize(300, 300)->save(public_path('/uploads/photos/'.$filename));
+            Image::make($photo)->resize(300, 300)->save(public_path('\uploads\photos\ '.$filename));
             $user->photo = $filename;
             $user->save();
         }
