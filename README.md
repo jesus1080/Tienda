@@ -4,36 +4,42 @@
 Aplicación web que permite la gestión y venta de productos en línea para una tienda familiar. Los usuarios pueden agregar productos al carrito, realizar pagos y recibir un correo electrónico con la confirmación de su compra. Además, los supervisores pueden gestionar productos y despachar pedidos, y los gerentes pueden hacer eso y crear supervisores.
 Instalación
 
-    Instala las dependencias de composer:
+## Requisitos
 
-'composer install'
+    - PHP 8.0.25
+    - Node 9.3.1
+    - Laravel 9.51.0
 
-    Configura las variables de entorno en un archivo .env:
+- Instala las dependencias de composer:
 
-'cp .env.example .env'
+    'composer install'
 
-    Ejecuta las migraciones y seeders:
+- Configura las variables de entorno en un archivo .env:
 
-'php artisan migrate'
+    'cp .env.example .env'
 
-    Inicia el servidor:
+- Ejecuta las migraciones y seeders:
 
-'php artisan serve'
+    'php artisan migrate'
 
-    Instala dependencias de node:
+- Inicia el servidor:
 
-'npm install'
+    'php artisan serve'
 
-    Inicia servidor node:
+- Instala dependencias de node:
 
-'npm run dev'
+    'npm install'
+
+- Inicia servidor node:
+
+    'npm run dev'
 
 ## Uso
 
-    Registra un usuario en la aplicación.
-    Inicia sesión como supervisor o gerente para gestionar productos y despachar pedidos.
-    Agrega productos al carrito y realiza un pago.
-    Recibe un correo electrónico con la confirmación de la compra.
+   - Registra un usuario en la aplicación.
+   - Inicia sesión como supervisor o gerente para gestionar productos y despachar pedidos.
+   - Agrega productos al carrito y realiza un pago.
+   - Recibe un correo electrónico con la confirmación de la compra.
 
 ## Contribución
 
