@@ -85,7 +85,7 @@
                                       {{ __('Registro De Pedidos') }}
                                     </a>
 
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="{{ route('users.index') }}">
                                       
                                       {{ __('Gestion De Cuentas') }}
                                     </a>

@@ -53,6 +53,13 @@ Route::delete('/cart/{id}', [App\Http\Controllers\CartController::class, 'destro
 //pago
 Route::get('/pay', [App\Http\Controllers\PaymentController::class, 'processPayment'])->name('pay');
 
+//users
+Route::middleware(['cuentas.gestion'])->group(function () {
+    Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
+});
+
+
+
 
 
 
