@@ -85,6 +85,11 @@
                                       {{ __('Registro De Pedidos') }}
                                     </a>
 
+                                    <a class="dropdown-item" href="{{ # }}">
+                                      
+                                      {{ __('Gestion De Cuentas') }}
+                                    </a>
+
                                 
                                 </div>
                                 
