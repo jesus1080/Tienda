@@ -5,7 +5,14 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">{{ __('Dashboard') }}
+                    <div class="d-flex justify-content-end">
+                        <a href="{{ route('cart.index') }}" class="btn btn-primary">
+                            Carrito de compras
+                        </a>
+                    </div>
+
+                </div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -26,7 +33,7 @@
                                 <h5 class="card-title">{{ $product->name }}</h5>
                                 <p class="card-text">{{ $product->description }}</p>
                                 <h6 class="card-subtitle text-muted">{{ $product->price }}</h6>
-                                <a href="#" class="btn btn-primary">Add to Cart</a>
+                                <a href="{{route('addToCart', $product->id)}}" class="btn btn-primary">Add to Cart</a>
                             </div>
                             </div>
                         </div>

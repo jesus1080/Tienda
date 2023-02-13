@@ -21,9 +21,13 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+//perfil 
+
 Route::get('/perfil', [App\Http\Controllers\PerfilController::class, 'edit'])->name('perfil');
 
 Route::post('/perfil', [App\Http\Controllers\PerfilController::class, 'update'])->name('perfil.update');
+
+//products
 
 Route::get('/products', [App\Http\Controllers\ProductController::class, 'index'])->name('products');
 
@@ -36,4 +40,18 @@ Route::get('/product/{id}', [App\Http\Controllers\ProductController::class, 'edi
 Route::patch('product/{id}/update', [App\Http\Controllers\ProductController::class, 'update'])->name('products.update');
 
 Route::delete('products/{id}', [App\Http\Controllers\ProductController::class, 'destroy'])->name('products.destroy');
+
+//cart
+
+Route::get('/add-to-cart/{id}', [App\Http\Controllers\CartController::class, 'addToCart'])->name('addToCart');
+
+Route::get('/cart', [App\Http\Controllers\CartController::class, 'index'])->name('cart.index');
+
+Route::delete('/cart/{id}', [App\Http\Controllers\CartController::class, 'destroy'])->name('cart.destroy');
+
+//pago
+
+
+
+
 
