@@ -39,11 +39,9 @@
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->role }}</td>
                                     <td>
-                                        <form method="POST" action="#" >
-                                            @csrf
-                                            @method('PATCH')
-                                            <button type="submit" class="btn btn-danger">Eliminar</button>
-                                        </form>
+                                        
+                                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                                        
                                     </td>
                                 </tr>
                             @endforeach
