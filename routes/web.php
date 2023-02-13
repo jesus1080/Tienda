@@ -50,6 +50,14 @@ Route::get('/cart', [App\Http\Controllers\CartController::class, 'index'])->name
 Route::delete('/cart/{id}', [App\Http\Controllers\CartController::class, 'destroy'])->name('cart.destroy');
 
 //pago
+Route::get('/pay', [App\Http\Controllers\PaymentController::class, 'processPayment'])->name('pay');
+
+Route::get('/payments', [App\Http\Controllers\PaymentController::class, 'index'])->name('pay.index');
+
+Route::patch('/payment/{id}', [App\Http\Controllers\PaymentController::class, 'toDeliver'])->name('payments.update');
+
+
+
 
 
 

@@ -80,6 +80,11 @@
                                       {{ __('Administrar Productos') }}
                                     </a>
 
+                                    <a class="dropdown-item" href="{{ route('pay.index') }}">
+                                      
+                                      {{ __('Registro De Pedidos') }}
+                                    </a>
+
                                 
                                 </div>
                                 

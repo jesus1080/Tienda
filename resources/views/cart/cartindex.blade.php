@@ -33,18 +33,8 @@
         </tbody>
     </table>
     <div class="d-flex justify-content-end">
-        <a href="#" class="btn btn-primary">Proceder al pago</a>
+        <a href="{{ route('pay')}}" class="btn btn-primary">Proceder al pago</a>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
 
 @endsection
