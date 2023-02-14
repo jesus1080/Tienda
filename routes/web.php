@@ -56,6 +56,9 @@ Route::get('/pay', [App\Http\Controllers\PaymentController::class, 'processPayme
 //users
 Route::middleware(['cuentas.gestion'])->group(function () {
     Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
+    Route::delete('/user/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name('user.destroy');
+    Route::patch('/user/{id}', [App\Http\Controllers\UserController::class, 'updateRol'])->name('user.update');
+    Route::patch('/user/{id}/update', [App\Http\Controllers\UserController::class, 'userSupervisor'])->name('user.supervisor');
 });
 
 
