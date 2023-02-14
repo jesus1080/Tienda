@@ -21,7 +21,7 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!Estoy aqui') }}
+                    {{ __('Productos para ti') }}
                 </div>
                 <div class="container">
                     <div class="row">

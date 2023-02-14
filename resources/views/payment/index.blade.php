@@ -17,7 +17,21 @@
         <tbody>
             @foreach($payments as $item)
                 <tr>
-                    <td>{{ $item->description }}</td>
+                    @php
+                        $data = json_encode($item->description);
+                        $data2 = json_decode($data);
+                        $data3 = json_decode($data2);
+                        //dd($data3);
+                     
+                    @endphp
+                
+                    <td>
+                    
+                    @foreach ($data3 as $a) 
+                        <p>{{$a}}</p>
+                    @endforeach
+                    
+                    </td>
                     <td>{{ $item->amount }}</td>
                     <td>{{ $item->user->name }}</td>
                     <td>{{ $item->status }}</td>

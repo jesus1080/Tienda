@@ -74,21 +74,23 @@
                                       
                                         {{ __('Perfil') }}
                                     </a>
+                                    
+                                    @if(Auth::user()->role != 'cliente')
+                                        <a class="dropdown-item" href="{{ route('products') }}">
+                                        
+                                        {{ __('Administrar Productos') }}
+                                        </a>
 
-                                    <a class="dropdown-item" href="{{ route('products') }}">
-                                      
-                                      {{ __('Administrar Productos') }}
-                                    </a>
+                                        <a class="dropdown-item" href="{{ route('pay.index') }}">
+                                        
+                                        {{ __('Registro De Pedidos') }}
+                                        </a>
 
-                                    <a class="dropdown-item" href="{{ route('pay.index') }}">
-                                      
-                                      {{ __('Registro De Pedidos') }}
-                                    </a>
-
-                                    <a class="dropdown-item" href="{{ route('users.index') }}">
-                                      
-                                      {{ __('Gestion De Cuentas') }}
-                                    </a>
+                                        <a class="dropdown-item" href="{{ route('users.index') }}">
+                                        
+                                        {{ __('Gestion De Cuentas') }}
+                                        </a>
+                                    @endif
 
                                 
                                 </div>
