@@ -12,27 +12,27 @@ Instalación
 
 - Instala las dependencias de composer:
 
-    'composer install'
+    `composer install`
 
 - Configura las variables de entorno en un archivo .env:
 
-    'cp .env.example .env'
+    `cp .env.example .env`
 
 - Ejecuta las migraciones y seeders:
 
-    'php artisan migrate'
+    `php artisan migrate`
 
 - Inicia el servidor:
 
-    'php artisan serve'
+    `php artisan serve`
 
 - Instala dependencias de node:
 
-    'npm install'
+    `npm install`
 
 - Inicia servidor node:
 
-    'npm run dev'
+    `npm run dev`
 
 ## Uso
 
