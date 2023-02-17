@@ -18,17 +18,13 @@
             @foreach($payments as $item)
                 <tr>
                     @php
-                        $data = json_encode($item->description);
-                        $data2 = json_decode($data);
-                        $data3 = json_decode($data2);
-                        //dd($data3);
-                     
+                        $data = json_decode($item->description, true);
                     @endphp
                 
                     <td>
                     
-                    @foreach ($data3 as $a) 
-                        <p>{{$a}}</p>
+                    @foreach ($data as $a) 
+                        <p>{{$a['name']. '----precio: $ '. $a['price']}}</p>
                     @endforeach
                     
                     </td>

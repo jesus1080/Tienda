@@ -14,21 +14,24 @@ class PaymentController extends Controller
 {
     public function processPayment(Request $request)
     {
- 
-        $cart = Cart::content();
-       
 
-        //dd(Cart::total());
-        $payment = Payment::create([
-            'user_id' => auth()->user()->id,
-            'amount' => Cart::total(),
-            'description' => json_encode(Cart::content()->toArray())
-        ]);
-
-
-        Mail::to($request->user())->send(new PaymentConfirmation($payment));
-
-        return view('payment/show', compact('payment'));
+        $cartItems = Cart::content();
+        if(empty(auth()->user()->id))
+        {  
+            return view('cart/cartindex', compact('cartItems'));
+            
+        }else{
+            $payment = Payment::create([
+                'user_id' => auth()->user()->id,
+                'amount' => Cart::total(),
+                'description' => json_encode(Cart::content()->toArray())
+            ]);
+    
+            Mail::to($request->user())->send(new PaymentConfirmation($payment));
+    
+            return view('payment/show', compact('payment'));
+        } 
+      
     }
 
     public function index()

@@ -32,9 +32,28 @@
             @endforeach
         </tbody>
     </table>
-    <div class="d-flex justify-content-end">
-        <a href="{{ route('pay')}}" class="btn btn-primary">Proceder al pago</a>
-    </div>
+    @if (auth()->check())
+        <div class="d-flex justify-content-end">
+            <a href="{{ route('pay')}}" class="btn btn-primary">Proceder al pago</a>
+        </div>
+    @else
+    <form method="POST" action="" class="mb-3">
+        @csrf
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="email" class="form-label">Correo electrónico</label>
+                    <div class="d-inline-flex">
+                        <input type="email" name="email" class="form-control" id="email" style="width: 100%;" required>
+                        <button type="submit" class="btn btn-primary ms-2">Proceder al pago</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    @endif
+   
 </div>
 
 @endsection
