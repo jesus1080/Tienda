@@ -59,7 +59,7 @@
 
     @endif
     
-        <a href="https://api.whatsapp.com/send?phone=573225799838&amp;text=Hola quiero estos: {{$productos}}" class="btn btn-success"  target="_blank">
+        <a href="https://api.whatsapp.com/send?phone=57322&amp;text=Hola quiero estos: {{$productos}}" class="btn btn-success"  target="_blank">
             <i class="bi bi-whatsapp"></i> Contact us on WhatsApp
         </a>
       

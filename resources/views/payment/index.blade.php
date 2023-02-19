@@ -11,7 +11,7 @@
                 <th>Total</th>
                 <th>Cliente</th>
                 <th>Estado</th>
-                <th></th>
+                <th>Fecha</th>
             </tr>
         </thead>
         <tbody>
@@ -31,6 +31,7 @@
                     <td>{{ $item->amount }}</td>
                     <td>{{ $item->user->name }}</td>
                     <td>{{ $item->status }}</td>
+                    <td>{{ $item->created_at->format('d/m/Y')}}</td>
                     <td>
                         <form method="POST" action="{{ route('payments.update', $item->id) }}" >
                             @csrf
