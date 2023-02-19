@@ -36,6 +36,7 @@ class CartController extends Controller
     {
         $product = Product::find($id);
         Cart::add($product->id, $product->name, 1, $product->price);
-        return redirect()->route('cart.index');
+      
+        return redirect()->route('home');
     }
 }

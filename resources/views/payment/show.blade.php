@@ -10,7 +10,15 @@
                 <div class="card-body">
                     <p>Nombre del cliente: {{ $payment->user->name }}</p>
                     <p>Total a pagar: {{ $payment->amount }}</p>
-                    <p>Descripción: {{ $payment->description }}</p>
+
+                    @php
+                        $data = json_decode($payment->description, true);
+                    @endphp
+                    <p>Descripción: </p>
+                    @foreach ($data as $a) 
+                        <p>{{$a['name']. '----precio: $ '. $a['price']}}</p>
+                    @endforeach
+                   
                 </div>
             </div>
         </div>

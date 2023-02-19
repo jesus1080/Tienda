@@ -7,9 +7,18 @@
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}
                     <div class="d-flex justify-content-end">
-                        <a href="{{ route('cart.index') }}" class="btn btn-primary">
-                            Carrito de compras
-                        </a>
+                        <a  href="{{ route('cart.index') }}" class="btn btn-primary rounded-circle">
+                            <i class="bi bi-cart3" style="font-size: 2em;"></i>
+                            <span class="badge rounded-pill border bg-light text-dark">
+                                @if( !empty(session('cart')['default']))
+                                    {{ count(session('cart')['default']) }} 
+                                @else
+                                    {{0}}
+                                @endif
+                                
+                            </span>
+                           
+                        </a >
                     </div>
 
                 </div>

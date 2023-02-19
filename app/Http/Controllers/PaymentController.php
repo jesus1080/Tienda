@@ -8,6 +8,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Mail\PaymentConfirmation;
 use App\Mail\DeliveryConfirmation;
 use App\Models\Payment;
+use App\Models\User;
 
 
 class PaymentController extends Controller
@@ -16,22 +17,18 @@ class PaymentController extends Controller
     {
 
         $cartItems = Cart::content();
-        if(empty(auth()->user()->id))
-        {  
-            return view('cart/cartindex', compact('cartItems'));
-            
-        }else{
-            $payment = Payment::create([
+    
+        $payment = Payment::create([
                 'user_id' => auth()->user()->id,
                 'amount' => Cart::total(),
                 'description' => json_encode(Cart::content()->toArray())
-            ]);
+        ]);
     
-            Mail::to($request->user())->send(new PaymentConfirmation($payment));
+        Mail::to($request->user())->send(new PaymentConfirmation($payment));
+        Cart::destroy();
     
-            return view('payment/show', compact('payment'));
-        } 
-      
+        return view('payment/show', compact('payment'));
+        
     }
 
     public function index()
@@ -56,6 +53,35 @@ class PaymentController extends Controller
         //set delivery to supervisor
         
         return redirect('/payments');
+    }
+
+    public function pymentNotAuth(Request $request)
+    {
+        $usuario = User::where('email', $request->email)->first();
+
+        if(empty($usuario)){
+
+            $usuario = new User();
+            $usuario->name = 'visitante';
+            $usuario->email = $request->email;
+            $usuario->password = bcrypt('passwordfalso');
+            $usuario->save();
+
+        }
+       
+        $payment = Payment::create([
+            'user_id' => $usuario->id,
+            'amount' => Cart::total(),
+            'description' => json_encode(Cart::content()->toArray())
+        ]);
+        
+        
+        Mail::to($payment->user)->send(new DeliveryConfirmation($payment));
+
+        Cart::destroy();
+
+        return view('payment/show', compact('payment'));
+
     }
 
 }

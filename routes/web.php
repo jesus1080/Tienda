@@ -16,7 +16,8 @@ use App\Models\Product;
 
 Route::get('/', function () {
     $products = Product::all();
-    return view('home', compact('products'));
+    $countCart = 0;
+    return view('home', compact('products', 'countCart'));
 });
 
 Auth::routes();
@@ -63,7 +64,9 @@ Route::middleware(['cuentas.gestion'])->group(function () {
     Route::patch('/user/{id}/update', [App\Http\Controllers\UserController::class, 'userSupervisor'])->name('user.supervisor');
 });
 
+//pago user invitado
 
+Route::post('users/invitado', [App\Http\Controllers\PaymentController::class, 'pymentNotAuth'])->name('user.invitado');
 
 
 
