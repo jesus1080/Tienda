@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $products = Product::all();
+    $countCart = 0;
+    return view('home', compact('products', 'countCart'));
 });
 
 Auth::routes();
@@ -56,9 +59,14 @@ Route::get('/pay', [App\Http\Controllers\PaymentController::class, 'processPayme
 //users
 Route::middleware(['cuentas.gestion'])->group(function () {
     Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
+    Route::delete('/user/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name('user.destroy');
+    Route::patch('/user/{id}', [App\Http\Controllers\UserController::class, 'updateRol'])->name('user.update');
+    Route::patch('/user/{id}/update', [App\Http\Controllers\UserController::class, 'userSupervisor'])->name('user.supervisor');
 });
 
+//pago user invitado
 
+Route::post('users/invitado', [App\Http\Controllers\PaymentController::class, 'pymentNotAuth'])->name('user.invitado');
 
 
 
