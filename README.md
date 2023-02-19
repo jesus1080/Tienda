@@ -2,7 +2,7 @@
 ## Descripción
 
 Aplicación web que permite la gestión y venta de productos en línea para una tienda familiar. Los usuarios pueden agregar productos al carrito, realizar pagos y recibir un correo electrónico con la confirmación de su compra. Además, los supervisores pueden gestionar productos y despachar pedidos, y los gerentes pueden hacer eso y crear supervisores.
-Instalación
+
 
 ## Requisitos
 

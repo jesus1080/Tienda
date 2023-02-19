@@ -8,27 +8,27 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Mail\PaymentConfirmation;
 use App\Mail\DeliveryConfirmation;
 use App\Models\Payment;
+use App\Models\User;
 
 
 class PaymentController extends Controller
 {
     public function processPayment(Request $request)
     {
- 
-        $cart = Cart::content();
-       
 
-        //dd(Cart::total());
+        $cartItems = Cart::content();
+    
         $payment = Payment::create([
-            'user_id' => auth()->user()->id,
-            'amount' => Cart::total(),
-            'description' => json_encode(Cart::content()->toArray())
+                'user_id' => auth()->user()->id,
+                'amount' => Cart::total(),
+                'description' => json_encode(Cart::content()->toArray())
         ]);
-
-
+    
         Mail::to($request->user())->send(new PaymentConfirmation($payment));
-
+        Cart::destroy();
+    
         return view('payment/show', compact('payment'));
+        
     }
 
     public function index()
@@ -53,6 +53,35 @@ class PaymentController extends Controller
         //set delivery to supervisor
         
         return redirect('/payments');
+    }
+
+    public function pymentNotAuth(Request $request)
+    {
+        $usuario = User::where('email', $request->email)->first();
+
+        if(empty($usuario)){
+
+            $usuario = new User();
+            $usuario->name = 'visitante';
+            $usuario->email = $request->email;
+            $usuario->password = bcrypt('passwordfalso');
+            $usuario->save();
+
+        }
+       
+        $payment = Payment::create([
+            'user_id' => $usuario->id,
+            'amount' => Cart::total(),
+            'description' => json_encode(Cart::content()->toArray())
+        ]);
+        
+        
+        Mail::to($payment->user)->send(new DeliveryConfirmation($payment));
+
+        Cart::destroy();
+
+        return view('payment/show', compact('payment'));
+
     }
 
 }

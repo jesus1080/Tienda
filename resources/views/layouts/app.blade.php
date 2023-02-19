@@ -13,6 +13,9 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
@@ -20,7 +23,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/home') }}">
+                <a class="navbar-brand" href="{{ url('/') }}">
                     {{ 'Tienda Familiar' }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -74,21 +77,23 @@
                                       
                                         {{ __('Perfil') }}
                                     </a>
+                                    
+                                    @if(Auth::user()->role != 'cliente')
+                                        <a class="dropdown-item" href="{{ route('products') }}">
+                                        
+                                        {{ __('Administrar Productos') }}
+                                        </a>
 
-                                    <a class="dropdown-item" href="{{ route('products') }}">
-                                      
-                                      {{ __('Administrar Productos') }}
-                                    </a>
+                                        <a class="dropdown-item" href="{{ route('pay.index') }}">
+                                        
+                                        {{ __('Registro De Pedidos') }}
+                                        </a>
 
-                                    <a class="dropdown-item" href="{{ route('pay.index') }}">
-                                      
-                                      {{ __('Registro De Pedidos') }}
-                                    </a>
-
-                                    <a class="dropdown-item" href="{{ route('users.index') }}">
-                                      
-                                      {{ __('Gestion De Cuentas') }}
-                                    </a>
+                                        <a class="dropdown-item" href="{{ route('users.index') }}">
+                                        
+                                        {{ __('Gestion De Cuentas') }}
+                                        </a>
+                                    @endif
 
                                 
                                 </div>

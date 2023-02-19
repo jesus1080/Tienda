@@ -7,8 +7,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="container my-2">
-                        <a href="#" class="btn btn-primary float-right">Crear Supervisor</a>
-                        <!-- rest of the code -->
+                    <h1>Lista de usuarios</h1>
                     </div>
                 </div>
                 
@@ -22,7 +21,6 @@
                 </div>
                
                 <div class="container">
-                    <h1>Lista de usuarios</h1>
                     <table class="table">
                         <thead>
                             <tr>
@@ -39,9 +37,22 @@
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->role }}</td>
                                     <td>
-                                        
-                                        <button type="submit" class="btn btn-danger">Eliminar</button>
-                                        
+                                        @if ($user->role == 'supervisor')
+                                            <form action="{{ route('user.update', $user->id) }}" method="post">
+                                                @csrf
+                                                @method('PATCH')
+                                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                                            </form>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($user->role == 'cliente')
+                                            <form action="{{ route('user.supervisor', $user->id) }}" method="post">
+                                                @csrf
+                                                @method('PATCH')
+                                                <button type="submit" class="btn btn-primary btn-sm mr-2">Hacer Supervisor</button>
+                                            </form>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach
